@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "ignore": ["node_modules", ".git"],
+  "watch": ["."],
+  "ext": "js,json,env",
+  "delay": "500",
+  "legacyWatch": true,
+  "signal": "SIGTERM"
+}

@@ -1,8 +1,10 @@
-const express = require('express');
-const cors = require("cors");
+import express from 'express';
+import cors from "cors";
+import connectDB from './db/conn.js';
+
 const app =express();
 const PORT = 5000;
-
+connectDB();
 app.use(cors());
 app.use(express.json());
 
@@ -21,6 +23,7 @@ app.post('/api/data', (req, res) => {
     console.log("Body received:", req.body);
     const { name, name1 } = req.body;
 
+
     if (!name) {
         return res.status(400).json({
             success: false,
@@ -37,3 +40,14 @@ app.post('/api/data', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+
+
+
+
+
+
+
+
+
+
