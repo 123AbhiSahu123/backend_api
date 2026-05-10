@@ -83,6 +83,49 @@ fetch("https://my-api.onrender.com/users")
       console.log(data);
   });
 
+# connect mongodb atlas in backend server:-
+
+default extension :- 
+commonjs ==> js ==> old model
+module ==> mjs  ==> newly model
+
+package.json changes:-
+"type": "commonjs",  ===> js, => const express = require('express');
+"type": "module",    ===> js, => import express from "express";
+
+
+# project/index.js
+import connectDB from './db/conn.js';
+connectDB();
+
+project/db/conn.js
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
+const connectDB = async () =>{
+    try {
+        await mongoose.connect(process.env.ATLAS_URI);
+            console.log("MongoDB Connected...");
+    } 
+    catch (error) {
+        console.error("Error connecting to MongoDB:", error);
+        process.exit(1);
+    }
+};
+export default connectDB;
+
+
+# Nodemon Auto-Restart Fix (Quick Guide)
+project/nodemon.json
+{
+  "verbose": true,
+  "ignore": ["node_modules", ".git"],
+  "watch": ["."],
+  "ext": "js,json,env",
+  "delay": "500",
+  "legacyWatch": true,
+  "signal": "SIGTERM"
+}
 
 
 
